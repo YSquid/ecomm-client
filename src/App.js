@@ -11,6 +11,7 @@ import Checkout from './components/checkout/Checkout';
 import Orders from './components/orders/Orders';
 import OrderDetail from './components/orderDetail/OrderDetail';
 import Profile from './components/profile/Profile';
+import Header from './components/header/Header'
 import TestingNav from './components/testingNav/TestingNav';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <Router>
-      <TestingNav token = {token} />
+      <TestingNav/>
     <Routes>
       <Route path='/' element={<Products />}></Route>
       <Route path='/productdetail' element={<ProductDetail />}></Route>
