@@ -4,4 +4,20 @@
     width: 100%;
     background-color: var(--offwhite);
     overflow: auto;
+    display: grid;
+    grid-template-areas: "categories products";
+    grid-template-columns: 2fr 7fr;
 }
+
+.categories {
+    grid-area: 'categories';
+    display: flex;
+    background-color: grey;
+}
+
+.productsList {
+    grid-area: 'products';
+    display: flex;
+    background-color: lightyellow;
+}
+

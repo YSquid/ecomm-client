@@ -1,13 +1,12 @@
 import React from "react";
 import "./Products.css";
+import Categories from "../categories/Categories";
 
 function Products() {
   return (
     <section className="products">
-      <h3>
-        
-       
-      </h3>
+    <div className="categories"><Categories/></div>
+    <div className="productsList">Products</div>
     </section>
   );
 }
