@@ -2,38 +2,40 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./TestingNav.css";
 
-function testingNav() {
-  return <div className="nav">
-    <ul>
+function testingNav({ token }) {
+  return (
+    <div className="nav">
+      <ul>
         <li>
-            <Link to="/">Products</Link>
+          <Link to="/">Products</Link>
         </li>
         <li>
-            <Link to="/productdetail">Products Detail</Link>
+          <Link to="/productdetail">Products Detail</Link>
         </li>
         <li>
-            <Link to="/login">Login</Link>
+          <Link to="/login">Login</Link>
         </li>
         <li>
-            <Link to="/register">Register</Link>
+          <Link to="/register">Register</Link>
         </li>
         <li>
-            <Link to="/cart">Cart</Link>
+          <Link to="/cart">Cart</Link>
         </li>
         <li>
-            <Link to="/checkout">Checkout</Link>
+          <Link to="/checkout">Checkout</Link>
         </li>
         <li>
-            <Link to="/orders">Orders</Link>
+          <Link to="/orders">Orders</Link>
         </li>
         <li>
-            <Link to="/orderdetail">Order Detail</Link>
+          <Link to="/orderdetail">Order Detail</Link>
         </li>
         <li>
-            <Link to="/profile">Profile</Link>
+          <Link to="/profile">Profile</Link>
         </li>
-    </ul>
-  </div>;
+      </ul>
+    </div>
+  );
 }
 
 export default testingNav;
