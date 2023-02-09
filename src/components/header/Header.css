@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    min-width: 100vw;
+    background-color: var(--darkblue);
+    color: var(--offwhite);
+}
+
+.title {
+    padding: 1rem;
+}
+
+.nav {
+    padding: 1.8rem;
+    color: var(--offwhite)
+}
+
+nav a:link {
+    color: var(--offwhite)
+}
+
+nav a:visited {
+    color: var(--offwhite)
+}
+
+.navLoggedIn {
+    display: flex;
+    font-size: 2rem;
+}
+
+
+
+.navLoggedIn a {
+    flex-direction: row;
+    padding: 0.5rem;
+}
+
+.navNotLoggedIn a {
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .navLoggedIn {
+        flex-direction: column;
+    }
+}

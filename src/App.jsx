@@ -12,7 +12,7 @@ import Orders from './components/orders/Orders';
 import OrderDetail from './components/orderDetail/OrderDetail';
 import Profile from './components/profile/Profile';
 import Header from './components/header/Header'
-import TestingNav from './components/testingNav/TestingNav';
+// import TestingNav from './components/testingNav/TestingNav';
 import useToken from './useToken';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Router>
-      <TestingNav/>
+      <Header token={token} setToken={setToken}/>
     <Routes>
       <Route path='/' element={<Products />}></Route>
       <Route path='/productdetail' element={<ProductDetail />}></Route>
