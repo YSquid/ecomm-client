@@ -7,8 +7,8 @@ function Login({ token, setToken }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  //call to our login endpoing with credentials object passed in
-  //return a token which is the user object
+  //call to our login endpoint with credentials object passed in
+  //return value is the user object from passport
   const loginUser = async (credentials) => {
     const response = await fetch("http://localhost:3000/login", {
       method: "POST",
