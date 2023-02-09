@@ -4,4 +4,24 @@
   border: 0;
   outline: 0;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+
+#root {
+  width: 100vw;
+  background-color: orange;
+  overflow: hidden;
+}
+
+body {
+  width: 100vw;
+  background-color: lightgoldenrodyellow;
+  overflow: hidden;
+}
+
+:root {
+  --offwhite: #F9F7F7;
+  --lightgrey: #DBE2EF;
+  --midblue: #3F72AF;
+  --darkblue: #112D4E;
 }
