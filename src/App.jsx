@@ -13,11 +13,12 @@ import OrderDetail from './components/orderDetail/OrderDetail';
 import Profile from './components/profile/Profile';
 import Header from './components/header/Header'
 import TestingNav from './components/testingNav/TestingNav';
+import useToken from './useToken';
 
 function App() {
   //token that is set by login component. Pass it to and the set token functions to all routes that need auth
   //if token is set, show route, if not route returns the login screen
-  const [token, setToken] = useState();
+  const {token, setToken} = useToken();
   
   
 
