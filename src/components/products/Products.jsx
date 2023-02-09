@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
 import "./Products.css";
 
 function Products() {
   return (
-    <div>Products</div>
-  )
+    <section className="products">
+      <h3>
+        
+       
+      </h3>
+    </section>
+  );
 }
 
-export default Products
+export default Products;

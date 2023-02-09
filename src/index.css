@@ -10,13 +10,11 @@
 #root {
   width: 100vw;
   background-color: orange;
-  overflow: hidden;
 }
 
 body {
   width: 100vw;
   background-color: lightgoldenrodyellow;
-  overflow: hidden;
 }
 
 :root {
