@@ -11,6 +11,7 @@ import {
 function Categories({ setCategories }) {
   const [checkedCategories, setCheckedCategories] = useState([]);
 
+  //categories state is in products component. Update it everytime checked categories changes
   useEffect(() => {
     setCategories(checkedCategories)
   },[checkedCategories])
@@ -31,6 +32,9 @@ function Categories({ setCategories }) {
   };
 
   const handleCategoryChange = (event) => {
+    //this needs to be opposite of what I thought
+    //If the box was checked, as soon as event fires its now unchecked
+    //So we need to check if checked is false, if it is, filter that from categores
     if (!event.target.checked) {
       setCheckedCategories(
         checkedCategories.filter((category) => {
