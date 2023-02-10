@@ -3,13 +3,12 @@ import "./Products.css";
 import Categories from "../categories/Categories";
 import ProductCard from "../productCard/ProductCard";
 
-function Products(props) {
+function Products({user_id}) {
   //categories stored here, but set by the Categories component
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([])
-  console.log(props.user_id)
-  console.log(props.random)
+
 
   //get all products on products and store in state on render
   //filteredProducts contains all products loaded at first
@@ -42,6 +41,7 @@ function Products(props) {
       <div className="productsList">{filteredProducts.map((product) => {
         return (
           <ProductCard
+          user_id={user_id}
           key={product.id}
           id={product.id}
           name={product.name}

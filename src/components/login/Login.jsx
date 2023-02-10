@@ -9,16 +9,21 @@ function Login({ token, setToken }) {
 
   //call to our login endpoint with credentials object passed in
   //return value is the user object from passport
-  const loginUser = async (credentials) => {
+  const loginUser = async (email, password) => {
     const response = await fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(credentials),
+      body: JSON.stringify({
+        email: email,
+        password: password
+      }),
     });
 
+    console.log(response)
     const jsonResponse = await response.json();
+    console.log(jsonResponse)
     return jsonResponse;
   };
 
@@ -26,15 +31,12 @@ function Login({ token, setToken }) {
   //setToken state
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      email,
-      password,
-    });
+    const token = await loginUser(email, password);
     setToken(token);
   };
 
   if (token) {
-    return <Products />;
+    return <Products user_id={token} />;
   } else {
     return (
       <section className="Login">

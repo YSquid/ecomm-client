@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ProductCard.css";
 
-function ProductCard({ id, name, description, price, stock, token}) {
+function ProductCard({ id, name, description, price, stock, user_id}) {
   let [productCount, setProductCount] = useState(1);
 
   const increment = () => {
@@ -20,17 +20,24 @@ function ProductCard({ id, name, description, price, stock, token}) {
     }
   };
 
-//  const addToCart = async () => {
-//   const response = await fetch('http://localhost:3000/api/carts', {
-//     method: 'POST',
-//     headers: {
-//       'Content-type' : 'application/json'
-//     },
-//     body: JSON.stringify({
-//       // cart_id: 
-//     })
-//   })
-//  }
+ const addToCart = async () => {
+  const response = await fetch('http://localhost:3000/api/carts', {
+    method: 'POST',
+    headers: {
+      'Content-type' : 'application/json',
+      'user': user_id
+    },
+    body: JSON.stringify({
+      cart_id: user_id,
+      product_id: id,
+      product_count: productCount,
+     
+    })
+  })
+
+  const jsonResponse = await response.json()
+  console.log(jsonResponse)
+ }
   return (
     <article className="productCard">
       <div className="productImg">
@@ -50,12 +57,15 @@ function ProductCard({ id, name, description, price, stock, token}) {
         <br />
         Product Stock:{stock}
         <br/>
-        Token/user_id/cart_id: {token}
+        Token/user_id/cart_id: {user_id}
       </p>
       <div className="productCounter">
         <button type="submit" onClick={increment}>+</button>
         <p className="productCount">{productCount}</p>
         <button onClick={decrement}>-</button>
+      </div>
+      <div className="addToCart">
+        <button onClick={addToCart}>Add to cart</button>
       </div>
     </article>
   );
