@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Categories.css";
 import Checkbox from "@mui/material/Checkbox";
 import {
@@ -9,44 +9,39 @@ import {
 } from "@mui/material";
 
 function Categories({ setCategories }) {
-  const [checkedCategories, setCheckedCategories] = useState({
-    all: true,
-    sandwiches: true,
-    tacos: true,
-    dessert: true,
-    drinks: true,
-  });
+  const [checkedCategories, setCheckedCategories] = useState([]);
+
+  useEffect(() => {
+    setCategories(checkedCategories)
+  },[checkedCategories])
+
 
   const handleAllChange = () => {
-    if (checkedCategories.all) {
-      setCheckedCategories({
-        all: false,
-        sandwiches: false,
-        tacos: false,
-        dessert: false,
-        drinks: false,
-      });
-    
-      setCategories(null)
-      
-      
+    if (checkedCategories.includes("all")) {
+      setCheckedCategories([]);
     } else {
-      setCheckedCategories({
-        all: true,
-        sandwiches: true,
-        tacos: true,
-        dessert: true,
-        drinks: true,
-      });
-      setCategories(Object.keys(checkedCategories))
+      setCheckedCategories([
+        "all",
+        "sandwiches",
+        "tacos",
+        "desserts",
+        "drinks",
+      ]);
     }
   };
 
   const handleCategoryChange = (event) => {
-    setCheckedCategories({
-      ...checkedCategories,
-      [event.target.name]: event.target.checked,
-    });
+    if (!event.target.checked) {
+      setCheckedCategories(
+        checkedCategories.filter((category) => {
+          return category !== event.target.name;
+        })
+      );
+    } else {
+      setCheckedCategories([...checkedCategories, event.target.name]);
+
+    }
+    // setCategories(checkedCategories)
   };
   return (
     <div className="checkedCategories">
@@ -56,7 +51,7 @@ function Categories({ setCategories }) {
           <FormControlLabel
             control={
               <Checkbox
-                checked={checkedCategories.all}
+                checked={checkedCategories.includes('all')}
                 onChange={handleAllChange}
                 name="all"
               />
@@ -67,7 +62,7 @@ function Categories({ setCategories }) {
           <FormControlLabel
             control={
               <Checkbox
-                checked={checkedCategories.sandwiches}
+                checked={checkedCategories.includes("sandwiches")}
                 onChange={handleCategoryChange}
                 name="sandwiches"
               />
@@ -78,7 +73,7 @@ function Categories({ setCategories }) {
           <FormControlLabel
             control={
               <Checkbox
-                checked={checkedCategories.tacos}
+                checked={checkedCategories.includes("tacos")}
                 onChange={handleCategoryChange}
                 name="tacos"
               />
@@ -89,18 +84,18 @@ function Categories({ setCategories }) {
           <FormControlLabel
             control={
               <Checkbox
-                checked={checkedCategories.dessert}
+                checked={checkedCategories.includes("desserts")}
                 onChange={handleCategoryChange}
-                name="dessert"
+                name="desserts"
               />
             }
-            label="Dessert"
+            label="Desserts"
           />
 
           <FormControlLabel
             control={
               <Checkbox
-                checked={checkedCategories.drinks}
+                checked={checkedCategories.includes("drinks")}
                 onChange={handleCategoryChange}
                 name="drinks"
               />

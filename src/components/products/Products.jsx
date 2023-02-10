@@ -3,7 +3,7 @@ import "./Products.css";
 import Categories from "../categories/Categories";
 
 function Products() {
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
   return (
     <section className="products">
       <div className="categories">
