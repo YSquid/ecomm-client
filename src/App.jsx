@@ -19,14 +19,14 @@ function App() {
   //token that is set by login component. Pass it to and the set token functions to all routes that need auth
   //if token is set, show route, if not route returns the login screen
   const {token, setToken} = useToken();
-  
+  console.log(token)
   
 
   return (
     <Router>
       <Header token={token} setToken={setToken}/>
     <Routes>
-      <Route path='/' element={<Products />}></Route>
+      <Route path='/' element={<Products random='randomstring' user_id={token} />}></Route>
       <Route path='/productcard' element={<ProductCard />}></Route>
       <Route path='/login' element={<Login token={token} setToken={setToken}/>}></Route>
       <Route path='/register' element={<Register />}></Route>

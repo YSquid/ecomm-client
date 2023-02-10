@@ -11,7 +11,7 @@ import {
 
 
 function Categories({ setCategories }) {
-  const [checkedCategories, setCheckedCategories] = useState([]);
+  const [checkedCategories, setCheckedCategories] = useState(['all', 'sandwiches', 'tacos', 'desserts', 'drinks']);
 
   //categories state is in products component. Update it everytime checked categories changes
   useEffect(() => {
