@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Categories.css";
-import Checkbox from "@mui/material/Checkbox";
 import {
+  Checkbox,
   FormGroup,
   FormControl,
   FormControlLabel,
   FormLabel,
+  Typograhpy
 } from "@mui/material";
+
 
 function Categories({ setCategories }) {
   const [checkedCategories, setCheckedCategories] = useState([]);
@@ -32,6 +34,11 @@ function Categories({ setCategories }) {
   };
 
   const handleCategoryChange = (event) => {
+
+    setCheckedCategories(checkedCategories.filter((category) => {
+      console.log(category)
+      return category === "all";
+    }))
     //this needs to be opposite of what I thought
     //If the box was checked, as soon as event fires its now unchecked
     //So we need to check if checked is false, if it is, filter that from categores
@@ -55,7 +62,7 @@ function Categories({ setCategories }) {
           <FormControlLabel
             control={
               <Checkbox
-                checked={checkedCategories.includes('all')}
+                checked={checkedCategories.length === 5}
                 onChange={handleAllChange}
                 name="all"
               />
