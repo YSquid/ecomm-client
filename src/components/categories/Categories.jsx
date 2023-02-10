@@ -8,8 +8,8 @@ import {
   FormLabel,
 } from "@mui/material";
 
-function Categories() {
-  const [categories, setCategories] = useState({
+function Categories({ setCategories }) {
+  const [checkedCategories, setCheckedCategories] = useState({
     all: true,
     sandwiches: true,
     tacos: true,
@@ -18,37 +18,45 @@ function Categories() {
   });
 
   const handleAllChange = () => {
-    if (categories.all) {
-      setCategories({
+    if (checkedCategories.all) {
+      setCheckedCategories({
         all: false,
         sandwiches: false,
         tacos: false,
         dessert: false,
         drinks: false,
       });
+    
+      setCategories(null)
+      
+      
     } else {
-      setCategories({
+      setCheckedCategories({
         all: true,
         sandwiches: true,
         tacos: true,
         dessert: true,
         drinks: true,
       });
+      setCategories(Object.keys(checkedCategories))
     }
   };
 
   const handleCategoryChange = (event) => {
-    setCategories({ ...categories, [event.target.name]: event.target.checked });
+    setCheckedCategories({
+      ...checkedCategories,
+      [event.target.name]: event.target.checked,
+    });
   };
   return (
-    <div className="categories">
+    <div className="checkedCategories">
       <FormControl component="fieldset">
         <FormLabel component="legend">Categories</FormLabel>
         <FormGroup>
           <FormControlLabel
             control={
               <Checkbox
-                checked={categories.all}
+                checked={checkedCategories.all}
                 onChange={handleAllChange}
                 name="all"
               />
@@ -59,7 +67,7 @@ function Categories() {
           <FormControlLabel
             control={
               <Checkbox
-                checked={categories.sandwiches}
+                checked={checkedCategories.sandwiches}
                 onChange={handleCategoryChange}
                 name="sandwiches"
               />
@@ -70,7 +78,7 @@ function Categories() {
           <FormControlLabel
             control={
               <Checkbox
-                checked={categories.tacos}
+                checked={checkedCategories.tacos}
                 onChange={handleCategoryChange}
                 name="tacos"
               />
@@ -81,7 +89,7 @@ function Categories() {
           <FormControlLabel
             control={
               <Checkbox
-                checked={categories.dessert}
+                checked={checkedCategories.dessert}
                 onChange={handleCategoryChange}
                 name="dessert"
               />
@@ -92,7 +100,7 @@ function Categories() {
           <FormControlLabel
             control={
               <Checkbox
-                checked={categories.drinks}
+                checked={checkedCategories.drinks}
                 onChange={handleCategoryChange}
                 name="drinks"
               />
