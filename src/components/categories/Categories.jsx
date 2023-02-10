@@ -20,7 +20,8 @@ function Categories({ setCategories }) {
 
 
   const handleAllChange = () => {
-    if (checkedCategories.includes("all")) {
+    //only sets null if all categoires and all are checked, which is currently length 5
+    if (checkedCategories.length > 4) {
       setCheckedCategories([]);
     } else {
       setCheckedCategories([
@@ -34,11 +35,6 @@ function Categories({ setCategories }) {
   };
 
   const handleCategoryChange = (event) => {
-
-    setCheckedCategories(checkedCategories.filter((category) => {
-      console.log(category)
-      return category === "all";
-    }))
     //this needs to be opposite of what I thought
     //If the box was checked, as soon as event fires its now unchecked
     //So we need to check if checked is false, if it is, filter that from categores
@@ -62,6 +58,7 @@ function Categories({ setCategories }) {
           <FormControlLabel
             control={
               <Checkbox
+                //this is only checked if all defined categories + all are checked, which is currently 5
                 checked={checkedCategories.length === 5}
                 onChange={handleAllChange}
                 name="all"
