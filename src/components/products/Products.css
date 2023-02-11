@@ -9,15 +9,21 @@
     grid-template-columns: 2fr 7fr;
 }
 
-.categories {
+/* .categories {
     grid-area: 'categories';
     display: flex;
+    align-items: start;
     background-color: grey;
-}
+    position: relative;
+    width: 20%;
+} */
 
 .productsList {
     grid-area: 'products';
     display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
     background-color: lightyellow;
+    margin: 1rem;
 }
 
