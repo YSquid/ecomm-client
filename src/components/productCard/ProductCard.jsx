@@ -21,11 +21,13 @@ function ProductCard({ id, name, description, price, stock, user_id}) {
   };
 
  const addToCart = async () => {
+  console.log("add to cart clicked")
+  console.log(`${user_id}, ${id}, ${productCount}`)
   const response = await fetch('http://localhost:3000/api/carts', {
+    credentials: 'include',
     method: 'POST',
     headers: {
       'Content-type' : 'application/json',
-      'user': user_id
     },
     body: JSON.stringify({
       cart_id: user_id,
@@ -34,7 +36,8 @@ function ProductCard({ id, name, description, price, stock, user_id}) {
      
     })
   })
-
+  console.log(response)
+  console.log(`Response ran`)
   const jsonResponse = await response.json()
   console.log(jsonResponse)
  }

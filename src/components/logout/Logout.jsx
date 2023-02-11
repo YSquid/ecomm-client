@@ -4,6 +4,7 @@ import './Logout.css'
 function logout({ setToken }) {
   const logout = async () => {
     const response = await fetch("http://localhost:3000/logout", {
+      credentials: 'include',
       method: "POST",
       headers: {
         "Content-type": "application/json",

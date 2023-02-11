@@ -13,7 +13,7 @@ function Products({user_id}) {
   //get all products on products and store in state on render
   //filteredProducts contains all products loaded at first
   const getProducts = async () => {
-    const response = await fetch("http://localhost:3000/api/products");
+    const response = await fetch("http://localhost:3000/api/products", {credentials: 'include',});
     const responseJSON = await response.json();
     setProducts(responseJSON);
     setFilteredProducts(responseJSON)

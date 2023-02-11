@@ -11,6 +11,7 @@ function Login({ token, setToken }) {
   //return value is the user object from passport
   const loginUser = async (email, password) => {
     const response = await fetch("http://localhost:3000/login", {
+      credentials: 'include',
       method: "POST",
       headers: {
         "Content-type": "application/json",
