@@ -21,10 +21,7 @@ function Login({ token, setToken }) {
         password: password
       }),
     });
-
-    console.log(response)
     const jsonResponse = await response.json();
-    console.log(jsonResponse)
     return jsonResponse;
   };
 

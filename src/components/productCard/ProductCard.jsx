@@ -32,6 +32,8 @@ function ProductCard({ id, name, description, price, stock, user_id}) {
     body: JSON.stringify({
       cart_id: user_id,
       product_id: id,
+      product_name: name,
+      product_price: price,
       product_count: productCount,
      
     })
