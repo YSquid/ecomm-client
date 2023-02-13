@@ -31,10 +31,11 @@ function Login({ token, setToken }) {
     e.preventDefault();
     const token = await loginUser(email, password);
     setToken(token);
+    window.location.assign("http://localhost:4000/")
   };
 
   if (token) {
-    return <Products token={token} />;
+    return;
   } else {
     return (
       <section className="Login">
