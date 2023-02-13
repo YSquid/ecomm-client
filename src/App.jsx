@@ -29,7 +29,7 @@ function App() {
       <Route path='/register' element={<Register />}></Route>
       <Route path='/cart' element={<Cart token={token} setToken={setToken}/>}></Route>
       <Route path='/checkout' element={<Checkout />}></Route>
-      <Route path='/orders' element={<Orders />}></Route>
+      <Route path='/orders' element={<Orders token={token} />}></Route>
       <Route path='/orderdetail' element={<OrderDetail />}></Route>
     </Routes>
 

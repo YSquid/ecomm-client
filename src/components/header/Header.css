@@ -1,9 +1,11 @@
 .header {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: fit-content;
     min-width: 100vw;
+    max-width: 100%;
     background-color: var(--darkblue);
     color: var(--offwhite);
 }

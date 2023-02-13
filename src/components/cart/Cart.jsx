@@ -64,10 +64,10 @@ function Cart({ token, setToken }) {
           {cartItems ? (
             cartItems.map((item) => {
               return (
-                <div key={item.product_id} className="cart_item">
+                <div key={item.product_id} className="cartItem">
                   <ul>
-                    <li className="item_name">{item.product_name}</li>
-                    <li className="item_img">
+                    <h3 className="itemName">{item.product_name}</h3>
+                    <li className="itemImg">
                       <img
                         src={
                           process.env.PUBLIC_URL +
@@ -76,11 +76,11 @@ function Cart({ token, setToken }) {
                         alt=""
                       />
                     </li>
-                    <li className="item_count">Count: {item.product_count}</li>
-                    <li className="item_price">
+                    <li className="itemCount">Count: {item.product_count}</li>
+                    <li className="itemPrice">
                       Item Price: ${item.product_price}
                     </li>
-                    <li className="item_subtotal">
+                    <li className="itemSubtotal">
                       Subtotal$ {item.product_count * item.product_price}
                     </li>
                   </ul>

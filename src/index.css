@@ -7,13 +7,19 @@
   font-family: 'Rubik', sans-serif;
 }
 
+html {
+  background-color: darkblue;
+}
+
 #root {
   width: 100vw;
-  background-color: orange;
+  height: 100%;
+  background-color: red;
 }
 
 body {
   width: 100vw;
+  height: 100%;
   background-color: lightgoldenrodyellow;
 }
 
