@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import Products from "../products/Products";
+import { Navigate } from "react-router-dom";
 
 function Login({ token, setToken }) {
   //local hold of credentials for form
@@ -11,14 +11,14 @@ function Login({ token, setToken }) {
   //return value is the user object from passport
   const loginUser = async (email, password) => {
     const response = await fetch("http://localhost:3000/login", {
-      credentials: 'include',
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
         email: email,
-        password: password
+        password: password,
       }),
     });
     const jsonResponse = await response.json();
@@ -31,7 +31,6 @@ function Login({ token, setToken }) {
     e.preventDefault();
     const token = await loginUser(email, password);
     setToken(token);
-    window.location.assign("http://localhost:4000/")
   };
 
   if (token) {

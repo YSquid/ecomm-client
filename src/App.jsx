@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 // import Header from './components/header/Header';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
@@ -25,7 +25,7 @@ function App() {
       <Header token={token} setToken={setToken}/>
     <Routes>
       <Route path='/' element={<Products token={token} />}></Route>
-      <Route path='/login' element={<Login token={token} setToken={setToken}/>}></Route>
+      <Route path='/login' element={token ? <Navigate replace to="/"/> : <Login token={token} setToken={setToken}/>}></Route>
       <Route path='/register' element={<Register />}></Route>
       <Route path='/cart' element={<Cart token={token} setToken={setToken}/>}></Route>
       <Route path='/checkout' element={<Checkout />}></Route>
