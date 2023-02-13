@@ -9,7 +9,6 @@ import Cart from './components/cart/Cart';
 import Checkout from './components/checkout/Checkout';
 import Orders from './components/orders/Orders';
 import OrderDetail from './components/orderDetail/OrderDetail';
-import Profile from './components/profile/Profile';
 import Header from './components/header/Header'
 // import TestingNav from './components/testingNav/TestingNav';
 import useToken from './useToken';
@@ -32,7 +31,6 @@ function App() {
       <Route path='/checkout' element={<Checkout />}></Route>
       <Route path='/orders' element={<Orders />}></Route>
       <Route path='/orderdetail' element={<OrderDetail />}></Route>
-      <Route path='/profile' element={<Profile />}></Route>
     </Routes>
 
     </Router>
