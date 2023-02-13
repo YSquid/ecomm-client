@@ -3,7 +3,7 @@ import "./Products.css";
 import Categories from "../categories/Categories";
 import ProductCard from "../productCard/ProductCard";
 
-function Products({user_id}) {
+function Products({token}) {
   //categories stored here, but set by the Categories component
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -41,7 +41,7 @@ function Products({user_id}) {
       <div className="productsList">{filteredProducts.map((product) => {
         return (
           <ProductCard
-          user_id={user_id}
+          token={token}
           key={product.id}
           id={product.id}
           name={product.name}
@@ -49,7 +49,6 @@ function Products({user_id}) {
           price={product.price}
           stock={product.stock}
           img_path={product.img_path}
-          // user_id={user_id}
            />
         )
       })}</div>

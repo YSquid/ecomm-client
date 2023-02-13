@@ -34,7 +34,7 @@ function Login({ token, setToken }) {
   };
 
   if (token) {
-    return <Products user_id={token} />;
+    return <Products token={token} />;
   } else {
     return (
       <section className="Login">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ProductCard.css";
 
-function ProductCard({ id, name, description, price, stock, user_id}) {
+function ProductCard({ id, name, description, price, stock, token}) {
   let [productCount, setProductCount] = useState(1);
 
   const increment = () => {
@@ -22,7 +22,7 @@ function ProductCard({ id, name, description, price, stock, user_id}) {
 
  const addToCart = async () => {
   console.log("add to cart clicked")
-  console.log(`${user_id}, ${id}, ${productCount}`)
+  console.log(`${token}, ${id}, ${productCount}`)
   const response = await fetch('http://localhost:3000/api/carts', {
     credentials: 'include',
     method: 'POST',
@@ -30,7 +30,7 @@ function ProductCard({ id, name, description, price, stock, user_id}) {
       'Content-type' : 'application/json',
     },
     body: JSON.stringify({
-      cart_id: user_id,
+      cart_id: token,
       product_id: id,
       product_name: name,
       product_price: price,
@@ -62,7 +62,7 @@ function ProductCard({ id, name, description, price, stock, user_id}) {
         <br />
         Product Stock:{stock}
         <br/>
-        Token/user_id/cart_id: {user_id}
+        Token/cart_id: {token}
       </p>
       <div className="productCounter">
         <button type="submit" onClick={increment}>+</button>
