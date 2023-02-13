@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Cart.css";
 import Login from "../login/Login";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ token, setToken }) {
   const [cartItems, setCartItems] = useState();
+  const navigate = useNavigate();
 
   const getCartItems = async () => {
     const response = await fetch(
@@ -30,7 +32,9 @@ function Cart({ token, setToken }) {
       }
     );
 
-    console.log(response)
+    return (
+      navigate("/orders")
+    )
   };
 
   //total taken by reducing cartItems array
@@ -94,9 +98,9 @@ function Cart({ token, setToken }) {
         </div>
 
         <div className="checkout">
-          
-            <button type="submit" onClick={handleCheckout}>Checkout</button>
-          
+          <button type="submit" onClick={handleCheckout}>
+            Checkout
+          </button>
         </div>
       </div>
     </section>
