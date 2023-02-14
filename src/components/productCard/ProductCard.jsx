@@ -55,15 +55,6 @@ function ProductCard({ id, name, description, price, stock, token}) {
       <h3 className="productName">{name}</h3>
       <p className="productDescription">{description}</p>
       <p className="productPrice">${price}</p>
-      <p>
-        <b>Devonly</b>
-        <br />
-        Product ID: {id}
-        <br />
-        Product Stock:{stock}
-        <br/>
-        Token/cart_id: {token}
-      </p>
       <div className="productCounter">
         <button type="submit" onClick={increment}>+</button>
         <p className="productCount">{productCount}</p>
