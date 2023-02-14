@@ -34,6 +34,7 @@ function OrderDetail({ order_id }) {
         orderProducts.map((product) => {
           return (
             <div className="productDetail">
+              <p>-----</p>
               <p>{product.product_name}</p>
               <p>Count: {product.product_count}</p>
               <p>Item Price: {product.product_price}</p>
