@@ -30,7 +30,8 @@
     padding: 1rem;
 }
 
-.orderItem p, button {
-    margin: 1rem 0;
+
+.orderBasic p, button {
+    margin: 0.5rem;
 }
 
