@@ -15,8 +15,8 @@
 }
 
 .nav {
-    padding: 1.8rem;
-    color: var(--offwhite)
+    /* padding: 1.8rem; */
+    color: var(--offwhite);
 }
 
 nav a:link {
@@ -30,6 +30,8 @@ nav a:visited {
 .navLoggedIn {
     display: flex;
     font-size: 2rem;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -39,8 +41,22 @@ nav a:visited {
     padding: 0.5rem;
 }
 
+.navNotLoggedIn {
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
 .navNotLoggedIn a {
     margin-right: 1rem;
+}
+
+@media only screen and (max-width: 650px) {
+    .navNotLoggedIn {
+        flex-direction: column;
+        padding: 0.5rem 0;
+    } 
 }
 
 @media only screen and (max-width: 500px) {

@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    background-color: var(--lightgrey);
+    background-color: var(--offwhite);
 }
 .cartContainer {
     display: flex;

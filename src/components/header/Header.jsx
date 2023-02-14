@@ -25,7 +25,7 @@ function Header({ token, setToken }) {
 
         {!token && (
           <div className="navNotLoggedIn">
-            <Link to="/products" title="shop">Return to Shop</Link>
+            <Link to="/products" title="shop">Shop</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </div>
