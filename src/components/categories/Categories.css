@@ -1,8 +1,8 @@
 .checkedCategories {
+    margin-top: 0.5rem;
+}
+
+.MuiFormConttrolroot {
     display: flex;
     flex-direction: column;
-    position: fixed;
-    margin-top: 2rem;
-    margin-right: 10rem;
-    outline: 1px solid var(--midblue);
 }

@@ -53,8 +53,8 @@ function Categories({ setCategories }) {
   return (
     <div className="checkedCategories">
       <FormControl component="fieldset">
-        <FormLabel component="legend">Categories</FormLabel>
-        <FormGroup>
+        <FormLabel component="legend" sx={{ textAlign: 'center' }}>Categories</FormLabel>
+        <FormGroup sx={{ display: 'inline' }}>
           <FormControlLabel
             control={
               <Checkbox
