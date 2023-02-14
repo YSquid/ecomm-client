@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { Button, IconButton, Snackbar } from "@mui/material";
+import { AddCircleOutlineOutlined } from "@mui/icons-material";
 import "./ProductCard.css";
 
-function ProductCard({ id, name, description, price, stock, token}) {
+function ProductCard({ id, name, description, price, stock, token }) {
   let [productCount, setProductCount] = useState(1);
+  const [snackShow, setSnackShow] = useState(false);
+
+  const snackClose = () => {
+    setSnackShow(false)
+  }
 
   const increment = () => {
     if (productCount <= stock) {
@@ -20,29 +27,24 @@ function ProductCard({ id, name, description, price, stock, token}) {
     }
   };
 
- const addToCart = async () => {
-  console.log("add to cart clicked")
-  console.log(`${token}, ${id}, ${productCount}`)
-  const response = await fetch('http://localhost:3000/api/carts', {
-    credentials: 'include',
-    method: 'POST',
-    headers: {
-      'Content-type' : 'application/json',
-    },
-    body: JSON.stringify({
-      cart_id: token,
-      product_id: id,
-      product_name: name,
-      product_price: price,
-      product_count: productCount,
-     
-    })
-  })
-  console.log(response)
-  console.log(`Response ran`)
-  const jsonResponse = await response.json()
-  console.log(jsonResponse)
- }
+  const addToCart = async () => {
+    const response = await fetch("http://localhost:3000/api/carts", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        cart_id: token,
+        product_id: id,
+        product_name: name,
+        product_price: price,
+        product_count: productCount,
+      }),
+    });
+    const jsonResponse = await response.json();
+    setSnackShow(true);
+  };
   return (
     <article className="productCard">
       <div className="productImg">
@@ -56,12 +58,15 @@ function ProductCard({ id, name, description, price, stock, token}) {
       <p className="productDescription">{description}</p>
       <p className="productPrice">${price}</p>
       <div className="productCounter">
-        <button type="submit" onClick={increment}>+</button>
-        <p className="productCount">{productCount}</p>
-        <button onClick={decrement}>-</button>
+        <IconButton onClick={increment} style={{ color: "var(--midblue)" }}>
+          +
+        </IconButton>
+        <b className="productCount">{productCount}</b>
+        <IconButton onClick={decrement} style={{ color: "var(--midblue)" }}>-</IconButton>
       </div>
       <div className="addToCart">
-        <button onClick={addToCart}>Add to cart</button>
+        <Button variant="contained" onClick={addToCart}>Add to cart</Button>
+        <Snackbar open={snackShow} autoHideDuration={4000} onClose={snackClose} message="Added to cart"/>
       </div>
     </article>
   );

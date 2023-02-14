@@ -12,13 +12,15 @@
 .categories {
     width: fit-content;
     display: flex;
+    margin: 1rem 0;
+    padding: 0 1rem;
 }
 
 .productsList {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     margin: 1rem;
 }
 
