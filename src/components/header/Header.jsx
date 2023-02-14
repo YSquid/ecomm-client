@@ -16,7 +16,7 @@ function Header({ token, setToken }) {
       <nav className="nav">
         {token && (
           <div className="navLoggedIn">
-            <Link to="/profile" title="Profile"><AiOutlineUser/></Link>
+            <Link to="/" title="shop">Return to Shop</Link>
             <Link to="/cart" title="Cart"><AiOutlineShoppingCart/></Link>
             <Link to="/orders" title="Orders"><AiOutlineShopping/></Link>
             <Logout setToken={setToken}/>
@@ -25,6 +25,7 @@ function Header({ token, setToken }) {
 
         {!token && (
           <div className="navNotLoggedIn">
+            <Link to="/products" title="shop">Return to Shop</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </div>

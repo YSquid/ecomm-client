@@ -1,0 +1,12 @@
+.productCard {
+    width: 30%;
+    margin: 0.5rem;
+    padding: 1rem;
+}
+
+
+.productImg img {
+    object-fit: cover;
+    width: 9rem;
+    height: 7rem;
+}
