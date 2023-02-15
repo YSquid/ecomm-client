@@ -29,7 +29,7 @@ function Orders({ token }) {
 
   useEffect(() => {
     getOrders();
-  }, []);
+  });
   return (
     <section className="orders">
       <div className="ordersContainer">

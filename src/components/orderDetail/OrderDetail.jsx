@@ -17,13 +17,15 @@ function OrderDetail({ order_id }) {
 
   useEffect(() => {
     getOrderProducts();
-  }, []);
+  });
 
-  const totalPreTax = orderProducts
+  const preTaxRaw = orderProducts
     ? orderProducts.reduce((acc, curr) => {
         return acc + curr.product_price * curr.product_count;
       }, 0)
     : 0;
+
+  const totalPreTax = preTaxRaw.toFixed(2); 
 
   const tax = parseFloat(totalPreTax * 0.11).toFixed(2);
 
@@ -33,7 +35,7 @@ function OrderDetail({ order_id }) {
       {orderProducts ? (
         orderProducts.map((product) => {
           return (
-            <div className="productDetail">
+            <div className="productDetail" key={product.product_id}>
               <p>-----</p>
               <p>{product.product_name}</p>
               <p>Count: {product.product_count}</p>

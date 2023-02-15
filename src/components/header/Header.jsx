@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { FaHamburger } from "react-icons/fa";
-import {AiOutlineUser, AiOutlineShoppingCart, AiOutlineShopping} from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineShopping} from 'react-icons/ai'
 import Logout from '../logout/Logout'
 
 function Header({ token, setToken }) {

@@ -18,7 +18,7 @@ function App() {
   //if token is set, show route, if not route returns the login screen
   const {token, setToken} = useToken();
 
-  
+
 
   return (
     <Router>

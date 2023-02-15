@@ -31,7 +31,7 @@ function Products({token}) {
     });
 
     setFilteredProducts(filteredProducts)
-  }, [categories]);
+  }, [categories, products]);
 
   return (
     <section className="products">

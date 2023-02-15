@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Navigate } from "react-router-dom";
 
 function Login({ token, setToken }) {
   //local hold of credentials for form

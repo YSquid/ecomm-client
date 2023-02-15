@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, IconButton, Snackbar } from "@mui/material";
-import { AddCircleOutlineOutlined } from "@mui/icons-material";
 import "./ProductCard.css";
 
 function ProductCard({ id, name, description, price, stock, token }) {
@@ -28,7 +27,7 @@ function ProductCard({ id, name, description, price, stock, token }) {
   };
 
   const addToCart = async () => {
-    const response = await fetch("http://localhost:3000/api/carts", {
+     await fetch("http://localhost:3000/api/carts", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -42,7 +41,7 @@ function ProductCard({ id, name, description, price, stock, token }) {
         product_count: productCount,
       }),
     });
-    const jsonResponse = await response.json();
+   
     setSnackShow(true);
   };
   return (

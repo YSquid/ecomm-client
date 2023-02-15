@@ -6,7 +6,6 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Typograhpy
 } from "@mui/material";
 
 
@@ -16,7 +15,7 @@ function Categories({ setCategories }) {
   //categories state is in products component. Update it everytime checked categories changes
   useEffect(() => {
     setCategories(checkedCategories)
-  },[checkedCategories])
+  },[checkedCategories, setCategories])
 
 
   const handleAllChange = () => {
