@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Cart.css";
 import Login from "../login/Login";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 function Cart({ token, setToken }) {
   const [cartItems, setCartItems] = useState();
+  const [checkoutClicked, setCheckoutClicked] = useState(false);
   const navigate = useNavigate();
 
   const getCartItems = async () => {
@@ -21,6 +23,7 @@ function Cart({ token, setToken }) {
   });
 
   const handleCheckout = async () => {
+    setCheckoutClicked(true);
     await fetch(`http://localhost:3000/api/carts/checkout/${token}`, {
       credentials: "include",
       method: "POST",
@@ -98,11 +101,15 @@ function Cart({ token, setToken }) {
                   <h2>Tax: ${tax}</h2>
                   <h2>Grand Total: ${grandTotal} </h2>
                 </div>
-                <div className="checkout">
-                  <button type="submit" onClick={handleCheckout}>
-                    Checkout
-                  </button>
-                </div>
+                {checkoutClicked ? (
+                  <CircularProgress />
+                ) : (
+                  <div className="checkout">
+                    <button type="submit" onClick={handleCheckout}>
+                      Checkout
+                    </button>
+                  </div>
+                )}
               </>
             )
           : null}

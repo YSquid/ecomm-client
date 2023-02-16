@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { CircularProgress } from "@mui/material";
 import "./OrderDetail.css";
 
 function OrderDetail({ order_id }) {
@@ -25,11 +26,12 @@ function OrderDetail({ order_id }) {
       }, 0)
     : 0;
 
-  const totalPreTax = preTaxRaw.toFixed(2); 
+  const totalPreTax = preTaxRaw.toFixed(2);
 
   const tax = parseFloat(totalPreTax * 0.11).toFixed(2);
 
   const grandTotal = (Number(totalPreTax) + Number(tax)).toFixed(2);
+
   return (
     <div className="orderDetail">
       {orderProducts ? (
@@ -40,17 +42,23 @@ function OrderDetail({ order_id }) {
               <p>{product.product_name}</p>
               <p>Count: {product.product_count}</p>
               <p>Item Price: {product.product_price}</p>
-              <p><b>Subtotal: ${product.product_count * product.product_price}</b></p>
+              <p>
+                <b>
+                  Subtotal: ${product.product_count * product.product_price}
+                </b>
+              </p>
+              <p>-----</p>
+              <p>Order Subtotal: ${totalPreTax} </p>
+              <p>Order Tax: {tax}</p>
+              <p>
+                <b>Grand Total: {grandTotal}</b>
+              </p>
             </div>
           );
         })
       ) : (
-        <></>
+        <CircularProgress />
       )}
-      <p>-----</p>
-      <p>Order Subtotal: ${totalPreTax} </p>
-      <p>Order Tax: {tax}</p>
-      <p><b>Grand Total: {grandTotal}</b></p>
     </div>
   );
 }
