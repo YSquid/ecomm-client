@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import OrderDetail from "../orderDetail/OrderDetail";
 import Login from "../login/Login";
+import { Button } from "@mui/material";
 import "./Orders.css";
 
 function Orders({ token, setToken }) {
@@ -55,12 +56,12 @@ function Orders({ token, setToken }) {
                   <div className="orderBasic">
                     <p>Order ID: {order.id}</p>
                     <p>Order Date: {date}</p>
-                    <button
+                    <Button variant='contained'
                       className="details"
                       onClick={() => handleDetailsClick(order.id)}
                     >
                       Details
-                    </button>
+                    </Button>
                     {showDetails.includes(order.id) ? (
                       <OrderDetail order_id={order.id} />
                     ) : null}
