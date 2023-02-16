@@ -5,7 +5,6 @@
     align-items: center;
     height: fit-content;
     min-width: 100vw;
-    max-width: 100%;
     background-color: var(--darkblue);
     color: var(--offwhite);
 }
@@ -30,6 +29,7 @@ nav a:visited {
 .navLoggedIn {
     display: flex;
     font-size: 2rem;
+    padding: 1rem;
     justify-content: center;
     align-items: center;
 }
@@ -43,7 +43,7 @@ nav a:visited {
 
 .navNotLoggedIn {
     display: flex;
-    font-size: 2rem;
+    font-size: 1rem;
     justify-content: center;
     align-items: center;
 }
