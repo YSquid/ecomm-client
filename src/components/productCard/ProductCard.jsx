@@ -60,16 +60,16 @@ function ProductCard({ id, name, description, price, stock, token }) {
       </div>
       <div className="productFunctions">
         <div className="productCounter">
-          <IconButton onClick={increment} style={{ color: "var(--midblue)" }}>
+          <IconButton onClick={increment} sx={{ ':hover': {bgcolor: 'transparent', color: "var(--darkblue)"}, color: "var(--midblue)" }}>
             +
           </IconButton>
           <b className="productCount">{productCount}</b>
-          <IconButton onClick={decrement} style={{ color: "var(--midblue)" }}>
+          <IconButton onClick={decrement} sx={{ ':hover': {bgcolor: 'transparent', color: "var(--darkblue)"}, color: "var(--midblue)" }}>
             -
           </IconButton>
         </div>
         <div className="addToCart">
-          <Button variant="contained" onClick={addToCart}>
+          <Button variant="contained" onClick={addToCart} sx={{ ':hover': {bgcolor: 'var(--darkblue)', color: "var(--offwhite)"}, color: "var(--offwhite)" }}>
             Add to cart
           </Button>
           <Snackbar

@@ -1,3 +1,9 @@
+
+Button {
+    margin-right: 1rem;
+}
+
+
 .productCard {
     position: relative;
     display: flex;
@@ -40,9 +46,6 @@
     align-items: center;
 }
 
-Button {
-    margin-right: 1rem;
-}
 
 .productFunctions {
     width: 100%;
