@@ -48,18 +48,18 @@ function OrderDetail({ order_id }) {
                   Subtotal: ${product.product_count * product.product_price}
                 </b>
               </p>
-              <p>-----</p>
-              <p>Order Subtotal: ${totalPreTax} </p>
-              <p>Order Tax: {tax}</p>
-              <p>
-                <b>Grand Total: {grandTotal}</b>
-              </p>
             </div>
           );
         })
       ) : (
         <CircularProgress />
       )}
+      <p>-----</p>
+      <p>Order Subtotal: ${totalPreTax} </p>
+      <p>Order Tax: {tax}</p>
+      <p>
+        <b>Grand Total: {grandTotal}</b>
+      </p>
     </div>
   );
 }
