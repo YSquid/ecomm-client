@@ -67,25 +67,24 @@ function Cart({ token, setToken }) {
               cartItems.map((item) => {
                 return (
                   <div key={item.product_id} className="cartItem">
-                    <ul>
-                      <h3 className="itemName">{item.product_name}</h3>
-                      <li className="itemImg">
-                        <img
-                          src={
-                            process.env.PUBLIC_URL +
-                            `/assets/${item.product_name}.jpg`
-                          }
-                          alt=""
-                        />
-                      </li>
-                      <li className="itemCount">Count: {item.product_count}</li>
-                      <li className="itemPrice">
+                    <h3 className="itemName">{item.product_name}</h3>
+                    <img
+                      className="itemImg"
+                      src={
+                        process.env.PUBLIC_URL +
+                        `/assets/${item.product_name}.jpg`
+                      }
+                      alt=""
+                    />
+                    <div className="itemDetails">
+                      <p className="itemCount">Count: {item.product_count}</p>
+                      <p className="itemPrice">
                         Item Price: ${item.product_price}
-                      </li>
-                      <li className="itemSubtotal">
-                        Subtotal$ {item.product_count * item.product_price}
-                      </li>
-                    </ul>
+                      </p>
+                      <p className="itemSubtotal">
+                        Subtotal: ${item.product_count * item.product_price}
+                      </p>
+                    </div>
                   </div>
                 );
               })
@@ -102,9 +101,8 @@ function Cart({ token, setToken }) {
                   <h2>Subtotal: ${totalPreTax}</h2>
                   <h2>Tax: ${tax}</h2>
                   <h2>Grand Total: ${grandTotal} </h2>
-                </div>
-                {checkoutClicked ? (
-                  <CircularProgress />
+                  {checkoutClicked ? (
+                  <CircularProgress  className="checkout"/>
                 ) : (
                   <div className="checkout">
                     <Button
@@ -116,6 +114,8 @@ function Cart({ token, setToken }) {
                     </Button>
                   </div>
                 )}
+                </div>
+                
               </>
             )
           : null}
