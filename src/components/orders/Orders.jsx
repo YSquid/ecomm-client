@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import OrderDetail from "../orderDetail/OrderDetail";
+import Login from "../login/Login";
 import "./Orders.css";
 
-function Orders({ token }) {
+function Orders({ token, setToken }) {
   const [orders, setOrders] = useState();
   const [showDetails, setShowDetails] = useState([]);
 
   const handleDetailsClick = (orderId) => {
     if (showDetails.includes(orderId)) {
-      setShowDetails(showDetails.filter((order) => {
-        return order !== orderId
-      }))
+      setShowDetails(
+        showDetails.filter((order) => {
+          return order !== orderId;
+        })
+      );
     } else {
       setShowDetails([...showDetails, orderId]);
     }
@@ -28,8 +31,15 @@ function Orders({ token }) {
   };
 
   useEffect(() => {
-    getOrders();
+    if (token) {
+      getOrders();
+    }
   });
+
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
+
   return (
     <section className="orders">
       <div className="ordersContainer">
@@ -51,7 +61,9 @@ function Orders({ token }) {
                     >
                       Details
                     </button>
-                    {showDetails.includes(order.id) ? <OrderDetail order_id={order.id} /> : null}
+                    {showDetails.includes(order.id) ? (
+                      <OrderDetail order_id={order.id} />
+                    ) : null}
                   </div>
                 </div>
               );

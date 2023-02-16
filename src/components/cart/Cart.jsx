@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Cart.css";
 import Login from "../login/Login";
 import { useNavigate } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Button } from "@mui/material";
 
 function Cart({ token, setToken }) {
   const [cartItems, setCartItems] = useState();
@@ -19,7 +19,9 @@ function Cart({ token, setToken }) {
   };
 
   useEffect(() => {
-    getCartItems();
+    if (token) {
+      getCartItems();
+    }
   });
 
   const handleCheckout = async () => {
@@ -105,9 +107,13 @@ function Cart({ token, setToken }) {
                   <CircularProgress />
                 ) : (
                   <div className="checkout">
-                    <button type="submit" onClick={handleCheckout}>
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      onClick={handleCheckout}
+                    >
                       Checkout
-                    </button>
+                    </Button>
                   </div>
                 )}
               </>
