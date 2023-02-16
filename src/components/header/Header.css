@@ -24,6 +24,10 @@
     color: var(--offwhite)
 }
 
+.header a:hover {
+    color: var(--orange);
+}
+
 .title {
     padding: 1rem;
 }

@@ -8,3 +8,8 @@
     padding: 0.2rem;
     border-radius: 1rem;
 }
+
+button:hover {
+    background-color: var(--orange);
+    color: var(--offwhite);
+}
