@@ -58,25 +58,27 @@ function ProductCard({ id, name, description, price, stock, token }) {
         <p className="productDescription">{description}</p>
         <p className="productPrice">${price}</p>
       </div>
-      <div className="productCounter">
-        <IconButton onClick={increment} style={{ color: "var(--midblue)" }}>
-          +
-        </IconButton>
-        <b className="productCount">{productCount}</b>
-        <IconButton onClick={decrement} style={{ color: "var(--midblue)" }}>
-          -
-        </IconButton>
-      </div>
-      <div className="addToCart">
-        <Button variant="contained" onClick={addToCart}>
-          Add to cart
-        </Button>
-        <Snackbar
-          open={snackShow}
-          autoHideDuration={4000}
-          onClose={snackClose}
-          message="Added to cart"
-        />
+      <div className="productFunctions">
+        <div className="productCounter">
+          <IconButton onClick={increment} style={{ color: "var(--midblue)" }}>
+            +
+          </IconButton>
+          <b className="productCount">{productCount}</b>
+          <IconButton onClick={decrement} style={{ color: "var(--midblue)" }}>
+            -
+          </IconButton>
+        </div>
+        <div className="addToCart">
+          <Button variant="contained" onClick={addToCart}>
+            Add to cart
+          </Button>
+          <Snackbar
+            open={snackShow}
+            autoHideDuration={4000}
+            onClose={snackClose}
+            message="Added to cart"
+          />
+        </div>
       </div>
     </article>
   );
