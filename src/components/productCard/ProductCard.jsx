@@ -7,8 +7,8 @@ function ProductCard({ id, name, description, price, stock, token }) {
   const [snackShow, setSnackShow] = useState(false);
 
   const snackClose = () => {
-    setSnackShow(false)
-  }
+    setSnackShow(false);
+  };
 
   const increment = () => {
     if (productCount <= stock) {
@@ -27,7 +27,7 @@ function ProductCard({ id, name, description, price, stock, token }) {
   };
 
   const addToCart = async () => {
-     await fetch("http://localhost:3000/api/carts", {
+    await fetch("http://localhost:3000/api/carts", {
       credentials: "include",
       method: "POST",
       headers: {
@@ -41,7 +41,7 @@ function ProductCard({ id, name, description, price, stock, token }) {
         product_count: productCount,
       }),
     });
-   
+
     setSnackShow(true);
   };
   return (
@@ -53,19 +53,30 @@ function ProductCard({ id, name, description, price, stock, token }) {
           alt={name + "image"}
         />
       </div>
-      <h3 className="productName">{name}</h3>
-      <p className="productDescription">{description}</p>
-      <p className="productPrice">${price}</p>
+      <div className="productDetails">
+        <h3 className="productName">{name}</h3>
+        <p className="productDescription">{description}</p>
+        <p className="productPrice">${price}</p>
+      </div>
       <div className="productCounter">
         <IconButton onClick={increment} style={{ color: "var(--midblue)" }}>
           +
         </IconButton>
         <b className="productCount">{productCount}</b>
-        <IconButton onClick={decrement} style={{ color: "var(--midblue)" }}>-</IconButton>
+        <IconButton onClick={decrement} style={{ color: "var(--midblue)" }}>
+          -
+        </IconButton>
       </div>
       <div className="addToCart">
-        <Button variant="contained" onClick={addToCart}>Add to cart</Button>
-        <Snackbar open={snackShow} autoHideDuration={4000} onClose={snackClose} message="Added to cart"/>
+        <Button variant="contained" onClick={addToCart}>
+          Add to cart
+        </Button>
+        <Snackbar
+          open={snackShow}
+          autoHideDuration={4000}
+          onClose={snackClose}
+          message="Added to cart"
+        />
       </div>
     </article>
   );
