@@ -18,7 +18,8 @@ function OrderDetail({ order_id }) {
 
   useEffect(() => {
     getOrderProducts();
-  });
+    // eslint-disable-next-line
+  }, []);
 
   const preTaxRaw = orderProducts
     ? orderProducts.reduce((acc, curr) => {
