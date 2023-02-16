@@ -7,13 +7,15 @@
     margin: 1.2rem 0.5rem;
 }
 
+.productImg {
+    background-color: var(--darkblue);
+}
 
 .productImg img {
     object-fit: cover;
-    max-width: 100%;
+    width: 100%;
     aspect-ratio: 1;
-    /* border-radius: 1rem; */
-    margin-bottom: -0.5rem;
+    overflow: hidden;
 }
 
 .productCard h3, p {
