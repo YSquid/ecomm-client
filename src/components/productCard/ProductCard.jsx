@@ -3,7 +3,7 @@ import { Button, IconButton, Snackbar } from "@mui/material";
 import "./ProductCard.css";
 
 function ProductCard({ id, name, description, price, stock, token }) {
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
 
   let [productCount, setProductCount] = useState(1);
   const [snackShow, setSnackShow] = useState(false);

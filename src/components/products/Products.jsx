@@ -5,7 +5,7 @@ import ProductCard from "../productCard/ProductCard";
 import { CircularProgress } from "@mui/material";
 
 function Products({token}) {
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/'
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000'
   //categories stored here, but set by the Categories component
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);

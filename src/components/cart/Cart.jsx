@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress, Button } from "@mui/material";
 
 function Cart({ token, setToken }) {
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
   const [cartItems, setCartItems] = useState();
   const [checkoutClicked, setCheckoutClicked] = useState(false);
   const navigate = useNavigate();

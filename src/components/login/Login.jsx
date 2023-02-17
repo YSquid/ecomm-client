@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 
 function Login({ token, setToken }) {
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
   //local hold of credentials for form
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

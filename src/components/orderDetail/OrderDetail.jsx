@@ -3,7 +3,7 @@ import { CircularProgress } from "@mui/material";
 import "./OrderDetail.css";
 
 function OrderDetail({ order_id }) {
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
   const [orderProducts, setOrderProducts] = useState();
 
   const getOrderProducts = async () => {
