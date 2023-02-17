@@ -14,6 +14,7 @@ function Login({ token, setToken }) {
       credentials: "include",
       method: "POST",
       headers: {
+        "Accept": "*/*",
         "Content-type": "application/json",
       },
       body: JSON.stringify({
