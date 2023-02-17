@@ -5,6 +5,7 @@ import ProductCard from "../productCard/ProductCard";
 import { CircularProgress } from "@mui/material";
 
 function Products({token}) {
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/'
   //categories stored here, but set by the Categories component
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -15,7 +16,7 @@ function Products({token}) {
   //get all products on products and store in state on render
   //filteredProducts contains all products loaded at first
   const getProducts = async () => {
-    const response = await fetch("http://localhost:3000/api/products", {credentials: 'include',});
+    const response = await fetch(`${baseURL}/api/products`, {credentials: 'include',});
     const responseJSON = await response.json();
     setProducts(responseJSON);
     setFilteredProducts(responseJSON)
@@ -36,7 +37,7 @@ function Products({token}) {
     setFilteredProducts(filteredProducts)
   }, [categories, products]);
 
-  console.log(process.env)
+  console.log(process.env.NODE_ENV)
 
   if (isLoading) {
     return (
