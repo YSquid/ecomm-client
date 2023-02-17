@@ -36,6 +36,8 @@ function Products({token}) {
     setFilteredProducts(filteredProducts)
   }, [categories, products]);
 
+  console.log(process.env)
+
   if (isLoading) {
     return (
       <CircularProgress />
