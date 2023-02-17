@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import "./Register.css";
 
 function Register() {
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   //when registration completes, set newUser state, used to render the Navigate component to redirect to login
@@ -11,7 +12,7 @@ function Register() {
   //call to /register endpoint
   //return value is the user object from passport
   const registerUser = async (credentials) => {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch(`${baseURL}/register`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

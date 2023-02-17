@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import "./Orders.css";
 
 function Orders({ token, setToken }) {
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
   const [orders, setOrders] = useState();
   const [showDetails, setShowDetails] = useState([]);
 
@@ -22,7 +23,7 @@ function Orders({ token, setToken }) {
 
   const getOrders = async () => {
     const response = await fetch(
-      `http://localhost:3000/api/orders/user/${token}`,
+      `${baseURL}/api/orders/user/${token}`,
       {
         credentials: "include",
       }

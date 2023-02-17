@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 
 function Login({ token, setToken }) {
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
   //local hold of credentials for form
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -9,7 +10,7 @@ function Login({ token, setToken }) {
   //call to our login endpoint with credentials object passed in
   //return value is the user object from passport
   const loginUser = async (email, password) => {
-    const response = await fetch("http://localhost:3000/login", {
+    const response = await fetch(`${baseURL}/login`, {
       credentials: "include",
       method: "POST",
       headers: {

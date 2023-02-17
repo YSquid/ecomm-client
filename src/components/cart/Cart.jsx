@@ -5,13 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress, Button } from "@mui/material";
 
 function Cart({ token, setToken }) {
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app/' : 'http://localhost:3000/';
   const [cartItems, setCartItems] = useState();
   const [checkoutClicked, setCheckoutClicked] = useState(false);
   const navigate = useNavigate();
 
   const getCartItems = async () => {
     const response = await fetch(
-      `http://localhost:3000/api/carts/cartproducts/${token}`,
+      `${baseURL}/api/carts/cartproducts/${token}`,
       { credentials: "include" }
     );
     const jsonResponse = await response.json();
@@ -26,7 +27,7 @@ function Cart({ token, setToken }) {
 
   const handleCheckout = async () => {
     setCheckoutClicked(true);
-    await fetch(`http://localhost:3000/api/carts/checkout/${token}`, {
+    await fetch(`${baseURL}/api/carts/checkout/${token}`, {
       credentials: "include",
       method: "POST",
       headers: {
