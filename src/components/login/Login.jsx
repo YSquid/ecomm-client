@@ -22,6 +22,7 @@ function Login({ token, setToken }) {
       }),
     });
     const jsonResponse = await response.json();
+    console.log(jsonResponse)
     return jsonResponse;
   };
 
