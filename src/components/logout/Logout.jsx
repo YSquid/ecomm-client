@@ -15,6 +15,7 @@ function Logout({ setToken }) {
     });
 
     if (response) {
+        console.log(response)
         setToken(null);
         sessionStorage.removeItem('token')
         return navigate('/');
