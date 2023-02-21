@@ -13,12 +13,12 @@ function Logout({ setToken }) {
         "Content-type": "application/json",
       },
     });
+
         console.log(response)
         setToken(null);
         sessionStorage.removeItem('token')
         return navigate('/');
        
-    }
   };
   return (
     <form onSubmit={logout} className='logout'>
