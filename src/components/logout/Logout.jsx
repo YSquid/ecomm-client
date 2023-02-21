@@ -1,7 +1,9 @@
 import React from "react";
 import './Logout.css'
+import { useNavigate } from "react-router";
 
-function logout({ setToken }) {
+function Logout({ setToken }) {
+  const navigate = useNavigate();
   const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
   const logout = async () => {
     const response = await fetch(`${baseURL}/logout`, {
@@ -15,7 +17,8 @@ function logout({ setToken }) {
     if (response) {
         setToken(null);
         sessionStorage.removeItem('token')
-        console.log(response)
+        return navigate('/');
+       
     }
   };
   return (
@@ -25,4 +28,4 @@ function logout({ setToken }) {
   );
 }
 
-export default logout;
+export default Logout;
