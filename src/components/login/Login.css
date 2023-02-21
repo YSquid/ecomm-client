@@ -1,0 +1,41 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.loginForm {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100vw;
+    font-size: 1.5rem;
+}
+
+.email {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-bottom: 0.5rem
+}
+
+input {
+    background-color: var(--lightgrey);
+    line-height: 2;
+}
+
+h1 {
+    margin: 1rem;
+}
+

@@ -2,6 +2,7 @@ import React from "react";
 import './Logout.css'
 import { useNavigate } from "react-router";
 
+
 function Logout({ setToken }) {
   const navigate = useNavigate();
   const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';

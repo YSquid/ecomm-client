@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router";
 import "./Login.css";
 
 function Login({ token, setToken }) {
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
+  const baseURL =
+    process.env.NODE_ENV === "production"
+      ? "https://ahmads-eats-api.netlify.app"
+      : "http://localhost:3000";
   //local hold of credentials for form
+  const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -21,9 +27,13 @@ function Login({ token, setToken }) {
         password: password,
       }),
     });
-    const jsonResponse = await response.json();
-    console.log(jsonResponse)
-    return jsonResponse;
+    if (response.status === 401) {
+      return { error: "bad info" };
+    } else {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      return jsonResponse;
+    }
   };
 
   //handle form submit - call loginUser function, passing in email/PW. Set that as token
@@ -31,17 +41,22 @@ function Login({ token, setToken }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = await loginUser(email, password);
-    setToken(token);
+    if (token.error) {
+      alert("Incorrect login info - please try again");
+    } else {
+      setToken(token);
+    }
   };
 
   if (token) {
     return;
   } else {
     return (
-      <section className="Login">
-        <div className="Login__form">
+      <section className="login">
+        <h1>Login</h1>
+        <div className="loginForm">
           <form onSubmit={handleSubmit} method="POST">
-            <div>
+            <div className="email">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -51,7 +66,7 @@ function Login({ token, setToken }) {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div>
+            <div className="password">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
@@ -61,7 +76,9 @@ function Login({ token, setToken }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button type="submit">Login</button>
+            <Button variant="contained" type="submit">
+              Login
+            </Button>
           </form>
         </div>
       </section>

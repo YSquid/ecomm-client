@@ -83,4 +83,8 @@ nav a:visited {
     .navLoggedIn {
         flex-direction: column;
     }
+
+    .title {
+        width: 80%
+    }
 }
