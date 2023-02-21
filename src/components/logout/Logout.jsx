@@ -13,8 +13,6 @@ function Logout({ setToken }) {
         "Content-type": "application/json",
       },
     });
-
-    if (response) {
         console.log(response)
         setToken(null);
         sessionStorage.removeItem('token')
