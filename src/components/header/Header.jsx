@@ -5,7 +5,7 @@ import { FaHamburger } from "react-icons/fa";
 import { AiOutlineHome, AiOutlineShoppingCart, AiOutlineShopping} from 'react-icons/ai'
 import Logout from '../logout/Logout'
 
-function Header({ token, setToken }) {
+function Header({ user, setUser }) {
   return (
     <header className="header">
       <div className="title">
@@ -14,16 +14,16 @@ function Header({ token, setToken }) {
         </h1>
       </div>
       <nav className="nav">
-        {token && (
+        {user && (
           <div className="navLoggedIn">
             <Link to="/" title="shop"><AiOutlineHome/></Link>
             <Link to="/cart" title="Cart"><AiOutlineShoppingCart/></Link>
             <Link to="/orders" title="Orders"><AiOutlineShopping/></Link>
-            <Logout setToken={setToken}/>
+            <Logout setUser={setUser}/>
           </div>
         )}
 
-        {!token && (
+        {!user && (
           <div className="navNotLoggedIn">
             <Link to="/products" title="shop">Shop</Link>
             <Link to="/login">Login</Link>

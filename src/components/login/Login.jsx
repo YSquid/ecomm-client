@@ -31,7 +31,6 @@ function Login({ user, setUser }) {
       return { error: "bad info" };
     } else {
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       return jsonResponse;
     }
   };
