@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, IconButton, Snackbar } from "@mui/material";
 import "./ProductCard.css";
 
-function ProductCard({ id, name, description, price, stock, token }) {
+function ProductCard({ id, name, description, price, stock, user }) {
   const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
 
   let [productCount, setProductCount] = useState(1);
@@ -36,7 +36,6 @@ function ProductCard({ id, name, description, price, stock, token }) {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        cart_id: token,
         product_id: id,
         product_name: name,
         product_price: price,

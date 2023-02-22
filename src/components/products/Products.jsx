@@ -4,7 +4,7 @@ import Categories from "../categories/Categories";
 import ProductCard from "../productCard/ProductCard";
 import { CircularProgress } from "@mui/material";
 
-function Products({token}) {
+function Products({user}) {
   const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000'
   //categories stored here, but set by the Categories component
   const [categories, setCategories] = useState([]);
@@ -26,6 +26,7 @@ function Products({token}) {
   //runs on render to get all products
   useEffect(() => {
     getProducts();
+    // eslint-disable-next-line
   }, [])
 
   //filters products each time categories updates
@@ -51,7 +52,7 @@ function Products({token}) {
       <div className="productsList">{filteredProducts.map((product) => {
         return (
           <ProductCard
-          token={token}
+          user={user}
           key={product.id}
           id={product.id}
           name={product.name}

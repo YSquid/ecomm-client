@@ -4,7 +4,7 @@ import Login from "../login/Login";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress, Button } from "@mui/material";
 
-function Cart({ token, setToken }) {
+function Cart({ user, setUser }) {
   const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
   const [cartItems, setCartItems] = useState();
   const [checkoutClicked, setCheckoutClicked] = useState(false);
@@ -12,7 +12,7 @@ function Cart({ token, setToken }) {
 
   const getCartItems = async () => {
     const response = await fetch(
-      `${baseURL}/api/carts/cartproducts/${token}`,
+      `${baseURL}/api/carts/cartproducts/`,
       { credentials: "include" }
     );
     const jsonResponse = await response.json();
@@ -20,14 +20,15 @@ function Cart({ token, setToken }) {
   };
 
   useEffect(() => {
-    if (token) {
+    if (user) {
       getCartItems();
     }
-  });
+    // eslint-disable-next-line
+  }, []);
 
   const handleCheckout = async () => {
     setCheckoutClicked(true);
-    await fetch(`${baseURL}/api/carts/checkout/${token}`, {
+    await fetch(`${baseURL}/api/carts/checkout/`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -52,8 +53,8 @@ function Cart({ token, setToken }) {
 
   const grandTotal = (Number(totalPreTax) + Number(tax)).toFixed(2);
 
-  if (!token) {
-    return <Login setToken={setToken} />;
+  if (!user) {
+    return <Login setUser={setUser} />;
   }
 
   return (
