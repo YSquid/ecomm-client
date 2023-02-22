@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router";
 import "./Login.css";
 
 function Login({ user, setUser }) {
@@ -9,7 +8,6 @@ function Login({ user, setUser }) {
       ? "https://ahmads-eats-api.netlify.app"
       : "http://localhost:3000";
   //local hold of credentials for form
-  const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 

@@ -16,7 +16,7 @@ function Register() {
   //call to /register endpoint
   //return value is the user object from passport
   const registerUser = async (credentials) => {
-    const response = await fetch(`${baseURL}/register`, {
+    const response = await fetch(`${baseURL}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
