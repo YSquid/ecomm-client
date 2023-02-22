@@ -1,4 +1,4 @@
 [[redirects]]
-    to="/.netlify/src/index/:splat"
+    to="/.netlify/src/app/:splat"
     from="/*"
     status=200

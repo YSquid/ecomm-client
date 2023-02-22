@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 // import Header from './components/header/Header';
 import Login from './components/login/Login';
@@ -16,7 +16,7 @@ import useToken from './useToken';
 function App() {
   //token that is set by login component. Pass it to and the set token functions to all routes that need auth
   //if token is set, show route, if not route returns the login screen
-  const {token, setToken} = useToken();
+  const {token, setToken} = useToken()
 
 
 
