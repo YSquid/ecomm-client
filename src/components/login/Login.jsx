@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
 import "./Login.css";
 
-function Login({ token, setToken }) {
+function Login({ user, setUser }) {
   const baseURL =
     process.env.NODE_ENV === "production"
       ? "https://ahmads-eats-api.netlify.app"
@@ -16,7 +16,7 @@ function Login({ token, setToken }) {
   //call to our login endpoint with credentials object passed in
   //return value is the user object from passport
   const loginUser = async (email, password) => {
-    const response = await fetch(`${baseURL}/login`, {
+    const response = await fetch(`${baseURL}/api/auth/login`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -40,15 +40,15 @@ function Login({ token, setToken }) {
   //setToken state
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser(email, password);
-    if (token.error) {
+    const user = await loginUser(email, password);
+    if (user.error) {
       alert("Incorrect login info - please try again");
     } else {
-      setToken(token);
+      setUser({id: user.id, email: user.email});
     }
   };
 
-  if (token) {
+  if (user) {
     return;
   } else {
     return (

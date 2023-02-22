@@ -1,38 +1,74 @@
-import './App.css';
-import React, {useState} from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 // import Header from './components/header/Header';
-import Login from './components/login/Login';
-import Register from './components/register/Register';
-import Products from './components/products/Products';
-import Cart from './components/cart/Cart';
-import Checkout from './components/checkout/Checkout';
-import Orders from './components/orders/Orders';
-import OrderDetail from './components/orderDetail/OrderDetail';
-import Header from './components/header/Header'
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
+import Products from "./components/products/Products";
+import Cart from "./components/cart/Cart";
+import Checkout from "./components/checkout/Checkout";
+import Orders from "./components/orders/Orders";
+import OrderDetail from "./components/orderDetail/OrderDetail";
+import Header from "./components/header/Header";
 // import TestingNav from './components/testingNav/TestingNav';
-import useToken from './useToken';
+// import useToken from "./useToken";
+
+const baseURL =
+  process.env.NODE_ENV === "production"
+    ? "https://ahmads-eats-api.netlify.app"
+    : "http://localhost:3000";
+
+const checkForUser = async (user, setUser) => {
+  if (!user) {
+    const response = await fetch(`${baseURL}/users/user`, {
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      setUser(jsonResponse);
+    }
+  }
+};
 
 function App() {
-  //token that is set by login component. Pass it to and the set token functions to all routes that need auth
-  //if token is set, show route, if not route returns the login screen
-  const {token, setToken} = useToken()
+  const [user, setUser] = useState();
 
-
-
+  useEffect(() => {
+    checkForUser(user, setUser);
+  }, [user]);
   return (
     <Router>
-      <Header token={token} setToken={setToken}/>
-    <Routes>
-      <Route path='/' element={<Products token={token} />}></Route>
-      <Route path='/login' element={token ? <Navigate replace to="/"/> : <Login token={token} setToken={setToken}/>}></Route>
-      <Route path='/register' element={<Register />}></Route>
-      <Route path='/cart' element={<Cart token={token} setToken={setToken}/>}></Route>
-      <Route path='/checkout' element={<Checkout />}></Route>
-      <Route path='/orders' element={<Orders token={token} setToken={setToken} />}></Route>
-      <Route path='/orderdetail' element={<OrderDetail />}></Route>
-    </Routes>
-
+      <Header user={user} setUser={setUser} />
+      <Routes>
+        <Route path="/" element={<Products user={user} />}></Route>
+        <Route
+          path="/login"
+          element={
+            user ? (
+              <Navigate replace to="/" />
+            ) : (
+              <Login user={user} setUser={setUser} />
+            )
+          }
+        ></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route
+          path="/cart"
+          element={<Cart user={user} setUser={setUser} />}
+        ></Route>
+        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route
+          path="/orders"
+          element={<Orders user={user} setUser={setUser} />}
+        ></Route>
+        <Route path="/orderdetail" element={<OrderDetail />}></Route>
+      </Routes>
     </Router>
   );
 }
