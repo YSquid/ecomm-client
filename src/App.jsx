@@ -25,7 +25,7 @@ const baseURL =
 
 const checkForUser = async (user, setUser) => {
   if (!user) {
-    await setTimeout(1000, () => console.log("waited 1 sec"))
+    await setTimeout(() => console.log("waited 1 sec"), 1000)
     const response = await fetch(`${baseURL}/api/users/user`, {
       credentials: "include",
     });
