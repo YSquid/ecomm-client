@@ -23,7 +23,7 @@ const baseURL =
     ? "https://ahmads-eats-api.netlify.app"
     : "http://localhost:3000";
 
-const checkForUser = async (user) => {
+const checkForUser = async (user, setUser) => {
   if (!user) {
     const response = await fetch(`${baseURL}/api/users/user`, {
       credentials: "include",
@@ -42,7 +42,7 @@ function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    checkForUser(user);
+    checkForUser(user, setUser);
   }, [user]);
   return (
     <Router>
