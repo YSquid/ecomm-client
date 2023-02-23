@@ -38,8 +38,7 @@ const checkForUser = async (user, setUser) => {
 function App() {
   const [user, setUser] = useState();
 
-  useEffect(async () => {
-    const timeout = await setTimeout(() => console.log("1 second delay"), 1000)
+  useEffect(() => {
     checkForUser(user, setUser);
   }, [user]);
   return (
