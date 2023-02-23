@@ -25,7 +25,7 @@ const baseURL =
 
 const checkForUser = async (user, setUser) => {
   if (!user) {
-    const response = await fetch(`${baseURL}/users/user`, {
+    const response = await fetch(`${baseURL}/api/users/user`, {
       credentials: "include",
     });
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, Snackbar } from "@mui/material";
 import "./Register.css";
 
 function Register() {
@@ -12,20 +12,30 @@ function Register() {
   const [password, setPassword] = useState();
   //when registration completes, set newUser state, used to render the Navigate component to redirect to login
   const [newUser, setNewUser] = useState();
+  const [registerError, setRegisterError] = useState(false);
+
+  //reset login error once snackbar autocloses
+  const snackClose = () => {
+    setRegisterError(false);
+  };
 
   //call to /register endpoint
   //return value is the user object from passport
   const registerUser = async (credentials) => {
-    const response = await fetch(`${baseURL}/api/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
+    try {
+      const response = await fetch(`${baseURL}/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
 
-    const jsonResponse = await response.json();
-    return jsonResponse;
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    } catch (error) {
+      setRegisterError(true);
+    }
   };
 
   //handle form submit - call registerUser function, passing in email/PW. Set that as newUser
@@ -69,7 +79,15 @@ function Register() {
               }}
             />
           </div>
-          <Button variant="contained" type="submit">Register</Button>
+          <Button variant="contained" type="submit">
+            Register
+          </Button>
+          <Snackbar
+            open={registerError}
+            autoHideDuration={6000}
+            onClose={snackClose}
+            message="Account with that email already exists"
+          />
         </form>
       </div>
     </section>

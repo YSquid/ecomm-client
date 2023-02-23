@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Snackbar } from "@mui/material";
 import "./Login.css";
 
 function Login({ user, setUser }) {
@@ -10,6 +10,12 @@ function Login({ user, setUser }) {
   //local hold of credentials for form
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [loginError, setLoginError] = useState(false);
+
+  //reset login error once snackbar autocloses
+  const snackClose = () => {
+    setLoginError(false);
+  };
 
   //call to our login endpoint with credentials object passed in
   //return value is the user object from passport
@@ -39,7 +45,7 @@ function Login({ user, setUser }) {
     e.preventDefault();
     const user = await loginUser(email, password);
     if (user.error) {
-      alert("Incorrect login info - please try again");
+      setLoginError(true);
     } else {
       setUser({id: user.id, email: user.email});
     }
@@ -76,6 +82,11 @@ function Login({ user, setUser }) {
             <Button variant="contained" type="submit">
               Login
             </Button>
+            <Snackbar 
+            open={loginError}
+            autoHideDuration={6000}
+            onClose={snackClose}
+            message="Incorrect email or password"/>
           </form>
         </div>
       </section>

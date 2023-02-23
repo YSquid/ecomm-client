@@ -36,7 +36,8 @@ function Orders({ user, setUser }) {
     if (user) {
       getOrders();
     }
-  });
+    // eslint-disable-next-line
+  }, [user]);
 
   if (!user) {
     return <Login setUser={setUser} />;
