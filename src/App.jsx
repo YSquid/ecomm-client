@@ -25,7 +25,7 @@ const baseURL =
 
 const checkForUser = async (user, setUser) => {
   if (!user) {
-    await setTimeout(() => console.log("waited 1 sec"), 1000)
+    // await setTimeout(() => console.log("waited 1 sec"), 1000)
     const response = await fetch(`${baseURL}/api/users/user`, {
       credentials: "include",
     });
@@ -43,7 +43,7 @@ function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    checkForUser(user, setUser);
+    setTimeout(checkForUser(user, setUser), 1000);
   }, [user]);
   return (
     <Router>
