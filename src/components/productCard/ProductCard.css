@@ -9,7 +9,7 @@ Button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 45%;
+    max-width: 28%;
     margin: 1.2rem 0.5rem;
 }
 
@@ -54,3 +54,17 @@ Button {
     align-items: center;
     
 }
+
+@media only screen and (max-width: 500px) {
+   
+.productCard {
+    max-width: 35%;
+} 
+}
+
+@media only screen and (max-width: 400px) {
+   
+    .productCard {
+        max-width: 55%;
+    } 
+    }
