@@ -24,7 +24,7 @@ function Cart({ user, setUser }) {
       getCartItems();
     }
     // eslint-disable-next-line
-  }, []);
+  }, [getCartItems]);
 
   const handleCheckout = async () => {
     setCheckoutClicked(true);
