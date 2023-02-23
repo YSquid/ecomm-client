@@ -43,7 +43,7 @@ function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    setTimeout(checkForUser(user, setUser), 1000);
+    checkForUser(user, setUser);
   }, [user]);
   return (
     <Router>
