@@ -42,7 +42,7 @@ function App() {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    checkForUser(user, setUser);
+    checkForUser(user);
   }, [user]);
   return (
     <Router>
