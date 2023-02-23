@@ -25,11 +25,9 @@ const baseURL =
 
 const checkForUser = async (user, setUser) => {
   if (!user) {
-    // await setTimeout(() => console.log("waited 1 sec"), 1000)
     const response = await fetch(`${baseURL}/api/users/user`, {
       credentials: "include",
     });
-
     if (response.ok) {
       const jsonResponse = await response.json();
       setUser(jsonResponse);
@@ -40,7 +38,8 @@ const checkForUser = async (user, setUser) => {
 function App() {
   const [user, setUser] = useState();
 
-  useEffect(() => {
+  useEffect(async () => {
+    const timeout = await setTimeout(() => console.log("1 second delay"), 1000)
     checkForUser(user, setUser);
   }, [user]);
   return (
