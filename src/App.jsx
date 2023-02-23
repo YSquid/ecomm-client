@@ -33,9 +33,7 @@ const checkForUser = async (user, setUser) => {
     if (response.ok) {
       const jsonResponse = await response.json();
       setUser(jsonResponse);
-    // } else {
-    //   console.log("No user found")
-    // }
+    } 
   }
 };
 
