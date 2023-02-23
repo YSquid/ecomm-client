@@ -23,9 +23,9 @@ const baseURL =
     ? "https://ahmads-eats-api.netlify.app"
     : "http://localhost:3000";
 
-const checkForUser = async (user, setUser, wait) => {
+const checkForUser = async (user, setUser) => {
   if (!user) {
-    wait(1000);
+    await setTimeout(1000, () => console.log("waited 1 sec"))
     const response = await fetch(`${baseURL}/api/users/user`, {
       credentials: "include",
     });
