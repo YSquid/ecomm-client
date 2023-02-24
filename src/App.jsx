@@ -6,17 +6,14 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-// import Header from './components/header/Header';
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Products from "./components/products/Products";
 import Cart from "./components/cart/Cart";
-import Checkout from "./components/checkout/Checkout";
 import Orders from "./components/orders/Orders";
 import OrderDetail from "./components/orderDetail/OrderDetail";
 import Header from "./components/header/Header";
-// import TestingNav from './components/testingNav/TestingNav';
-// import useToken from "./useToken";
+
 
 const baseURL =
   process.env.NODE_ENV === "production"
@@ -61,7 +58,6 @@ function App() {
           path="/cart"
           element={<Cart user={user} setUser={setUser} />}
         ></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
         <Route
           path="/orders"
           element={<Orders user={user} setUser={setUser} />}
