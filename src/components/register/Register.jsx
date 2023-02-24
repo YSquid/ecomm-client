@@ -53,6 +53,7 @@ function Register() {
     <section className="register">
       {newUser && <Navigate to="/login" replace={true} />}
       <h1>Register for Ahmad's Eats</h1>
+      <h2>Feel free to use a fake email, as this project was made for practice only</h2>
       <div className="registerForm">
         <form onSubmit={handleSubmit} method="POST">
           <div className="email">
