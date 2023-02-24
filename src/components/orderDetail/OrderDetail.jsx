@@ -11,9 +11,7 @@ function OrderDetail({ order_id }) {
       `${baseURL}/api/orders/orderproducts/${order_id}`,
       { credentials: "include" }
     );
-    console.log(response);
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
     setOrderProducts(jsonResponse);
   };
 
