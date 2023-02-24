@@ -16,7 +16,7 @@ function Header({ user, setUser }) {
       <nav className="nav">
         {user && (
           <div className="navLoggedIn">
-            <Link to="/products" title="shop"><AiOutlineHome/></Link>
+            <Link to="/" title="shop"><AiOutlineHome/></Link>
             <Link to="/cart" title="Cart"><AiOutlineShoppingCart/></Link>
             <Link to="/orders" title="Orders"><AiOutlineShopping/></Link>
             <Logout setUser={setUser}/>
@@ -25,7 +25,7 @@ function Header({ user, setUser }) {
 
         {!user && (
           <div className="navNotLoggedIn">
-            <Link to="/products" title="shop">Shop</Link>
+            <Link to="/" title="shop">Shop</Link>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
           </div>
