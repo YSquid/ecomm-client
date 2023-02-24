@@ -47,7 +47,6 @@ function Categories({ setCategories }) {
       setCheckedCategories([...checkedCategories, event.target.name]);
 
     }
-    // setCategories(checkedCategories)
   };
   return (
     <div className="checkedCategories">

@@ -7,8 +7,10 @@ import "./Orders.css";
 function Orders({ user, setUser }) {
   const baseURL = process.env.NODE_ENV === 'production' ? 'https://ahmads-eats-api.netlify.app' : 'http://localhost:3000';
   const [orders, setOrders] = useState();
+  //show details controls which orders have their details shown
   const [showDetails, setShowDetails] = useState([]);
 
+  //if details are already showing, filter them out of the array, else append them to array
   const handleDetailsClick = (orderId) => {
     if (showDetails.includes(orderId)) {
       setShowDetails(

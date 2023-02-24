@@ -20,6 +20,8 @@ const baseURL =
     ? "https://ahmads-eats-api.netlify.app"
     : "http://localhost:3000";
 
+//request at api/users/user checks the req.user object attached to each request by passport session
+
 const checkForUser = async (user, setUser) => {
   if (!user) {
     const response = await fetch(`${baseURL}/api/users/user`, {
@@ -33,11 +35,14 @@ const checkForUser = async (user, setUser) => {
 };
 
 function App() {
+  //user is passed down through component chain and used to conditionally render based on whether logged in or not
+  //each component that needs it also gets passed setUser so that they can update the apps user state when needed - e.g. the login/logout components
   const [user, setUser] = useState();
 
   useEffect(() => {
     checkForUser(user, setUser);
   }, [user]);
+  
   return (
     <Router>
       <Header user={user} setUser={setUser} />
