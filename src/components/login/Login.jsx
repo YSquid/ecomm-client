@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Snackbar } from "@mui/material";
+import { Button, Snackbar, CircularProgress } from "@mui/material";
 import "./Login.css";
 
 function Login({ user, setUser }) {
@@ -11,6 +11,7 @@ function Login({ user, setUser }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [loginError, setLoginError] = useState(false);
+  const [loginClicked, setLoginClicked] = useState(false);
 
   //reset login error once snackbar autocloses
   const snackClose = () => {
@@ -43,11 +44,13 @@ function Login({ user, setUser }) {
   //setToken state
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginClicked(true)
     const user = await loginUser(email, password);
     if (user.error) {
       setLoginError(true);
+      setLoginClicked(false);
     } else {
-      setUser({id: user.id, email: user.email});
+      setUser({ id: user.id, email: user.email });
     }
   };
 
@@ -79,14 +82,19 @@ function Login({ user, setUser }) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <Button variant="contained" type="submit">
-              Login
-            </Button>
-            <Snackbar 
-            open={loginError}
-            autoHideDuration={6000}
-            onClose={snackClose}
-            message="Incorrect email or password"/>
+            <div className="loginButton">
+            { loginClicked ? <CircularProgress/> : 
+              <Button variant="contained" type="submit">
+                Login
+              </Button>
+            }
+            </div>
+            <Snackbar
+              open={loginError}
+              autoHideDuration={6000}
+              onClose={snackClose}
+              message="Incorrect email or password"
+            />
           </form>
         </div>
       </section>

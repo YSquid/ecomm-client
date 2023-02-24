@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
+    overflow: hidden;
 }
 
 .loginForm {
@@ -12,6 +13,7 @@
     height: 100%;
     width: 100vw;
     font-size: 1.5rem;
+    overflow: hidden;
 }
 
 .email {
@@ -24,6 +26,10 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+}
+
+.loginButton {
+    overflow: hidden;
 }
 
 label {

@@ -30,6 +30,10 @@ h1, h2 {
     margin-bottom: 1rem;
 }
 
+.registerButton {
+    overflow: hidden;
+}
+
 label {
     margin-bottom: 0.5rem
 }

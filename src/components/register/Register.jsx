@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { Button, Snackbar } from "@mui/material";
+import { Button, Snackbar, CircularProgress } from "@mui/material";
 import "./Register.css";
 
 function Register() {
@@ -13,6 +13,7 @@ function Register() {
   //when registration completes, set newUser state, used to render the Navigate component to redirect to login
   const [newUser, setNewUser] = useState();
   const [registerError, setRegisterError] = useState(false);
+  const [registerClicked, setRegisterClicked] = useState(false);
 
   //reset login error once snackbar autocloses
   const snackClose = () => {
@@ -42,10 +43,12 @@ function Register() {
   //setNewUser state
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setRegisterClicked(true);
     const newUser = await registerUser({
       email,
       password,
     });
+    setRegisterClicked(false);
     setNewUser(newUser);
   };
 
@@ -53,7 +56,10 @@ function Register() {
     <section className="register">
       {newUser && <Navigate to="/login" replace={true} />}
       <h1>Register for Ahmad's Eats</h1>
-      <h2>Feel free to use a fake email, as this project was made for practice only</h2>
+      <h2>
+        Feel free to use a fake email, as this project was made for practice
+        only
+      </h2>
       <div className="registerForm">
         <form onSubmit={handleSubmit} method="POST">
           <div className="email">
@@ -80,9 +86,15 @@ function Register() {
               }}
             />
           </div>
-          <Button variant="contained" type="submit">
-            Register
-          </Button>
+          <div className="registerButton">
+            {registerClicked ? (
+              <CircularProgress />
+            ) : (
+              <Button variant="contained" type="submit">
+                Register
+              </Button>
+            )}
+          </div>
           <Snackbar
             open={registerError}
             autoHideDuration={6000}
