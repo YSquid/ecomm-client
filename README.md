@@ -75,7 +75,6 @@ Concepts tested include:
 - Servless Http
 - @supabase/supabase-js
 
-See package.json for full details
 ---
 
 ## Features

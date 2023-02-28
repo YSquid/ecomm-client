@@ -50,7 +50,7 @@ function ProductCard({ id, name, description, price, stock, user }) {
       <div className="productImg">
         {/* reference images stored in public folder using the process.env PUBLIC_URL prop, appending the folder and path*/}
         <img
-          src={process.env.PUBLIC_URL + `assets/${name}.jpg`}
+          src={process.env.PUBLIC_URL + `assets/${name}.webp`}
           alt={name + "image"}
         />
       </div>
